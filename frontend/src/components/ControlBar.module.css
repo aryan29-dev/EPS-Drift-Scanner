@@ -186,9 +186,9 @@
 }
 
 .customSelect {
-    display: flex;
-    gap: 4px;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 4px;
+  flex-wrap: nowrap;
 }
 
 .customOption {
@@ -196,8 +196,8 @@
     border: 1px solid var(--border);
     color: var(--text-muted);
     border-radius: 5px;
-    padding: 8px 12px;
-    font-size: 11px;
+    padding: 8px 10px;
+    font-size: 10px;
     letter-spacing: 1px;
     cursor: pointer;
     transition: all 0.15s;
