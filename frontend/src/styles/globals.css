@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+    --bg: #020b18;
+    --bg2: #040f1f;
+    --bg3: #071628;
+    --panel: #050e1c;
+    --border: #0d2a4a;
+    --border2: #0a1f38;
+    --blue: #00aaff;
+    --blue-dim: #0066bb;
+    --blue-glow: #00aaff33;
+    --cyan: #00e5ff;
+    --green: #00ff88;
+    --red: #ff3355;
+    --amber: #ffaa00;
+    --text: #c8dff5;
+    --text-dim: #4a7a9b;
+    --text-muted: #1e3a54;
+    --font-head: 'Orbitron', monospace;
+    --font-body: 'DM Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(var(--border2) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border2) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 500px;
+    background: radial-gradient(ellipse, #00aaff18 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+#root {
+    position: relative;
+    z-index: 1;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1
+    }
+
+    50% {
+        opacity: 0
+    }
+}
+
+@keyframes pulse-blue {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 var(--blue-glow);
+    }
+
+    50% {
+        box-shadow: 0 0 20px 4px var(--blue-glow);
+    }
+}

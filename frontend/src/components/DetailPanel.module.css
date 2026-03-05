@@ -1,0 +1,172 @@
+/* DetailPanel.module.css */
+.panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 460px;
+    height: 100vh;
+    background: var(--bg2);
+    border-left: 1px solid var(--border);
+    overflow-y: auto;
+    z-index: 200;
+    padding: 24px;
+    box-shadow: -30px 0 80px #000a;
+    animation: slideIn 0.25s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.panelHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.panelTicker {
+    font-family: var(--font-head);
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: var(--blue);
+    text-shadow: 0 0 20px var(--blue-glow);
+}
+
+.panelName {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 3px;
+}
+
+.closeBtn {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+}
+
+.closeBtn:hover {
+    border-color: var(--blue-dim);
+    color: var(--blue);
+}
+
+.kpiRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.kpi {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 10px 13px;
+}
+
+.kpiLabel {
+    font-size: 8px;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+}
+
+.kpiVal {
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.trendBadge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 4px 12px;
+    margin-bottom: 18px;
+}
+
+.chartBlock {
+    margin-bottom: 20px;
+}
+
+.chartTitle {
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border2);
+}
+
+.tableBlock {
+    margin-bottom: 20px;
+}
+
+.tableHeader {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+    gap: 4px;
+    font-size: 8px;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border2);
+    margin-bottom: 4px;
+}
+
+.tableRow {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+    gap: 4px;
+    font-size: 11px;
+    padding: 7px 8px;
+    border-radius: 4px;
+}
+
+.tableRow:hover {
+    background: var(--bg3);
+}
+
+.mlBox {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 32px;
+}
+
+.mlTitle {
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.mlDesc {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.6;
+}
+
+.mlDesc code {
+    color: var(--cyan);
+    background: var(--bg2);
+    padding: 1px 5px;
+    border-radius: 3px;
+}

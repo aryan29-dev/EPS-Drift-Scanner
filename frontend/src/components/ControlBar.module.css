@@ -1,0 +1,186 @@
+/* ControlBar.module.css */
+.wrap {
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--border2);
+    background: var(--bg2);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 140px;
+}
+
+.label {
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+}
+
+.inputRow {
+    display: flex;
+    gap: 6px;
+}
+
+.input {
+    flex: 1;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text);
+    padding: 9px 13px;
+    font-size: 13px;
+    outline: none;
+}
+
+.input:focus {
+    border-color: var(--blue-dim);
+    box-shadow: 0 0 0 2px var(--blue-glow);
+}
+
+.select {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text);
+    padding: 9px 13px;
+    font-size: 12px;
+    outline: none;
+    cursor: pointer;
+}
+
+.addBtn {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--blue);
+    border-radius: 5px;
+    padding: 9px 14px;
+    font-size: 11px;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+.addBtn:hover {
+    background: var(--blue-glow);
+    border-color: var(--blue);
+}
+
+.scanBtn {
+    background: var(--blue);
+    color: #020b18;
+    border: none;
+    border-radius: 6px;
+    padding: 11px 32px;
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 0 20px var(--blue-glow);
+}
+
+.scanBtn:hover:not(:disabled) {
+    background: var(--cyan);
+}
+
+.scanBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.scanBtn.scanning {
+    background: var(--bg3);
+    color: var(--blue);
+    border: 1px solid var(--border);
+    box-shadow: none;
+}
+
+.spinner {
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--border);
+    border-top-color: var(--blue);
+    border-radius: 50%;
+    display: inline-block;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.chipRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.chipLabel {
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.chip {
+    background: var(--blue-glow);
+    border: 1px solid var(--blue-dim);
+    color: var(--blue);
+    border-radius: 4px;
+    padding: 3px 9px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.chipX {
+    color: var(--blue-dim);
+    cursor: pointer;
+    font-size: 9px;
+}
+
+.chipX:hover {
+    color: var(--red);
+}
+
+.divider {
+    width: 1px;
+    height: 16px;
+    background: var(--border);
+    margin: 0 4px;
+}
+
+.ghostChip {
+    color: var(--text-muted);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.ghostChip:hover {
+    color: var(--blue);
+    border-color: var(--blue-dim);
+}
