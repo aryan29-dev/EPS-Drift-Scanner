@@ -167,3 +167,10 @@
     border-radius: 4px;
     padding: 6px 10px;
 }
+
+.name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 220px;
+}
