@@ -186,9 +186,9 @@
 }
 
 .customSelect {
-  display: flex;
-  gap: 4px;
-  flex-wrap: nowrap;
+    display: flex;
+    gap: 4px;
+    flex-wrap: nowrap;
 }
 
 .customOption {

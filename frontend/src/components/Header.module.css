@@ -1,23 +1,86 @@
 /* Header.module.css */
 .header {
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 18px 32px;
   border-bottom: 1px solid var(--border);
   background: linear-gradient(180deg, #031220 0%, transparent 100%);
-  position: sticky; top: 0; z-index: 50;
+  position: sticky;
+  top: 0;
+  z-index: 50;
   backdrop-filter: blur(12px);
 }
-.logo { font-family: var(--font-head); font-size: 22px; font-weight: 900; letter-spacing: 4px; }
-.logoAccent { color: var(--blue); text-shadow: 0 0 20px var(--blue); }
-.tagline { font-size: 11px; color: var(--text-dim); letter-spacing: 3px; margin-top: 3px; }
-.right { display: flex; align-items: center; gap: 20px; }
-.meta { display: flex; flex-direction: column; align-items: flex-end; }
-.metaLabel { font-size: 8px; color: var(--text-muted); letter-spacing: 2px; }
-.metaVal { font-size: 13px; color: var(--blue); font-weight: 500; }
+
+.logo {
+  font-family: var(--font-head);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+
+.logoAccent {
+  color: var(--blue);
+  text-shadow: 0 0 20px var(--blue);
+}
+
+.tagline {
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 3px;
+  margin-top: 3px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.metaLabel {
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+}
+
+.metaVal {
+  font-size: 13px;
+  color: var(--blue);
+  font-weight: 500;
+}
+
 .alertBadge {
-  background: #ff335518; border: 1px solid #ff335540; color: var(--red);
-  font-size: 11px; padding: 5px 12px; border-radius: 4px; letter-spacing: 1px;
+  background: #ff335518;
+  border: 1px solid #ff335540;
+  color: var(--red);
+  font-size: 11px;
+  padding: 5px 12px;
+  border-radius: 4px;
+  letter-spacing: 1px;
   animation: pulse-blue 2s infinite;
 }
-.liveDot { display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--text-dim); letter-spacing: 2px; }
-.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: blink 2s infinite; display: inline-block; }
+
+.liveDot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: blink 2s infinite;
+  display: inline-block;
+}
