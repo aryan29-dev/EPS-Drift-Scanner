@@ -57,7 +57,7 @@
 }
 
 .name {
-    font-size: 10px;
+    font-size: 12px;
     color: var(--text-muted);
     margin-top: 2px;
 }
@@ -79,7 +79,7 @@
 }
 
 .badge {
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 1.5px;
     border: 1px solid;
     border-radius: 3px;
@@ -101,14 +101,14 @@
 }
 
 .statLabel {
-    font-size: 8px;
+    font-size: 11px;
     color: var(--text-muted);
     letter-spacing: 1.5px;
     margin-bottom: 3px;
 }
 
 .statVal {
-    font-size: 16px;
+    font-size: 14px;
     font-family: var(--font-head);
     font-weight: 700;
     letter-spacing: 1px;

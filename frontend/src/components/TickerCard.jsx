@@ -38,9 +38,11 @@ export default function TickerCard({ data, isSelected, onSelect }) {
                 </div>
             </div>
             <div className={styles.badges}>
-                <span className={styles.badge} style={{ color: trendColor[data.drift_trend], borderColor: trendColor[data.drift_trend] + "44", background: trendColor[data.drift_trend] + "11" }}>
-                    {trendIcon[data.drift_trend]} {data.drift_trend.toUpperCase()}
-                </span>
+                {!data.alert?.startsWith("Error") && (
+                    <span className={styles.badge} style={{ color: trendColor[data.drift_trend], borderColor: trendColor[data.drift_trend] + "44", background: trendColor[data.drift_trend] + "11" }}>
+                        {trendIcon[data.drift_trend]} {data.drift_trend.toUpperCase()}
+                    </span>
+                )}
                 {data.alert && !data.alert.startsWith("Error") && (
                     <span className={styles.badge} style={{ color: "var(--red)", borderColor: "#ff335544", background: "#ff335511" }}>⚠ ALERT</span>
                 )}

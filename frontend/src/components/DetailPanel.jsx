@@ -20,7 +20,7 @@ export default function DetailPanel({ data, onClose }) {
             <div className={styles.kpiRow}>
                 {[
                     { label: "PRICE", val: data.current_price ? `$${data.current_price.toFixed(2)}` : "—", color: "var(--text)" },
-                    { label: "AVG DRIFT", val: fmtDrift(data.summary_stats?.avg_drift_pct), color: driftColor(data.summary_stats?.avg_drift_pct) },
+                    { label: "AVG. DRIFT", val: fmtDrift(data.summary_stats?.avg_drift_pct), color: driftColor(data.summary_stats?.avg_drift_pct) },
                     { label: "BEAT RATE", val: data.summary_stats?.beat_rate_pct != null ? `${data.summary_stats.beat_rate_pct}%` : "—", color: "var(--cyan)" },
                     { label: "ML SCORE", val: data.ml_drift_score.toFixed(1), color: data.ml_drift_score > 6 ? "var(--red)" : data.ml_drift_score > 3 ? "var(--amber)" : "var(--green)" },
                 ].map(k => (
@@ -79,9 +79,9 @@ export default function DetailPanel({ data, onClose }) {
             </div>
 
             <div className={styles.mlBox}>
-                <div className={styles.mlTitle}>HOW ML SCORE WORKS</div>
+                <div className={styles.mlTitle}>HOW THE ML SCORE WORKS</div>
                 <div className={styles.mlDesc}>
-                    sklearn <code>LinearRegression</code> fits a trend to historical drift values. The latest residual is normalised by std-dev. Score &gt;6 = anomalous vs own history.
+                    Uses machine learning to flag when a company's latest EPS drift is unusually large compared to its own historical pattern.
                 </div>
             </div>
         </div>

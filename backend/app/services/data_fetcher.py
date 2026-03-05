@@ -4,18 +4,24 @@ from app.utils.logger import setup_logger
 
 logger = setup_logger(__name__)
 
+
 def fetch_ticker_info(symbol: str) -> dict:
     try:
         t = yf.Ticker(symbol)
         info = t.info
+
+        if not info or len(info) < 5 or ("regularMarketPrice" not in info and "currentPrice" not in info):
+            raise ValueError(f"{symbol} is not a valid or listed ticker")
+
         return {
             "company_name": info.get("longName") or info.get("shortName") or symbol,
             "sector": info.get("sector") or "Unknown",
             "current_price": info.get("currentPrice") or info.get("regularMarketPrice"),
         }
     except Exception as e:
-        logger.warning(f"Could not fetch info for {symbol}: {e}")
-        return {"company_name": symbol, "sector": "Unknown", "current_price": None}
+        logger.warning(f"Invalid ticker {symbol}: {e}")
+        raise ValueError(f"'{symbol}' not found — check the ticker symbol")
+
 
 def fetch_earnings_history(symbol: str, max_quarters: int = 12) -> pd.DataFrame:
     try:

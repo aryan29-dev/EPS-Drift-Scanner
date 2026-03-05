@@ -32,12 +32,20 @@ export default function ControlBar({ tickers, setTickers, threshold, setThreshol
                 </div>
                 <div className={styles.field}>
                     <label className={styles.label}>SORT BY</label>
-                    <select className={styles.select} value={sortBy} onChange={e => setSortBy(e.target.value)}>
-                        <option value="drift">AVG DRIFT</option>
-                        <option value="ml">ML SCORE</option>
-                        <option value="beat">BEAT RATE</option>
-                        <option value="ticker">TICKER A–Z</option>
-                    </select>
+                    <div className={styles.customSelect}>
+                        {[
+                            { val: "drift", label: "AVG DRIFT" },
+                            { val: "ml", label: "ML SCORE" },
+                            { val: "beat", label: "BEAT RATE" },
+                            { val: "ticker", label: "TICKER A–Z" },
+                        ].map(opt => (
+                            <div key={opt.val}
+                                className={`${styles.customOption} ${sortBy === opt.val ? styles.activeOption : ""}`}
+                                onClick={() => setSortBy(opt.val)}>
+                                {sortBy === opt.val ? "▶ " : ""}{opt.label}
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 <button className={`${styles.scanBtn} ${loading ? styles.scanning : ""}`}
                     onClick={() => onScan(tickers, threshold)} disabled={loading || !tickers.length}>

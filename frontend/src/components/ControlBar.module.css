@@ -184,3 +184,33 @@
     color: var(--blue);
     border-color: var(--blue-dim);
 }
+
+.customSelect {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+.customOption {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+}
+
+.customOption:hover {
+    border-color: var(--blue-dim);
+    color: var(--blue);
+}
+
+.activeOption {
+    background: var(--blue-glow);
+    border-color: var(--blue-dim);
+    color: var(--blue);
+}

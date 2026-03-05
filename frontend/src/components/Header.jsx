@@ -7,7 +7,7 @@ export default function Header({ alertCount, lastScanned, tickerCount }) {
                 <div className={styles.logo}>
                     <span className={styles.logoAccent}>EPS</span> DRIFT SCANNER
                 </div>
-                <div className={styles.tagline}>yfinance · pandas · sklearn · fastapi</div>
+                <div className={styles.tagline}>Scans earnings reports in real-time to detect when companies beat or miss Wall Street EPS estimates</div>
             </div>
             <div className={styles.right}>
                 {lastScanned && (
