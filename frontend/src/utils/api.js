@@ -1,4 +1,4 @@
-const BASE = "http://localhost:8000/api";
+const BASE = "https://eps-drift-scanner.onrender.com/api";
 
 export async function scanTickers(tickers, alertThreshold = 5) {
   const res = await fetch(`${BASE}/scanner/scan`, {
