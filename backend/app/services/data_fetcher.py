@@ -1,19 +1,13 @@
 import yfinance as yf
 import pandas as pd
-import requests
 from app.utils.logger import setup_logger
 
 logger = setup_logger(__name__)
 
-session = requests.Session()
-session.headers.update({
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-})
-
 
 def fetch_ticker_info(symbol: str) -> dict:
     try:
-        t = yf.Ticker(symbol, session=session)
+        t = yf.Ticker(symbol)
         info = t.info
 
         if not info or len(info) < 5 or ("regularMarketPrice" not in info and "currentPrice" not in info):
@@ -31,7 +25,7 @@ def fetch_ticker_info(symbol: str) -> dict:
 
 def fetch_earnings_history(symbol: str, max_quarters: int = 12) -> pd.DataFrame:
     try:
-        t = yf.Ticker(symbol, session=session)
+        t = yf.Ticker(symbol)
         df = t.earnings_dates
         if df is None or df.empty:
             return pd.DataFrame(columns=["date", "actual", "estimate"])
