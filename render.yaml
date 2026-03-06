@@ -3,6 +3,5 @@ services:
     name: eps-drift-scanner
     env: python
     rootDir: backend
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install fastapi uvicorn yfinance pandas numpy scikit-learn pydantic
     startCommand: uvicorn main:app --host 0.0.0.0 --port 8000
-    pythonVersion: "3.11.0"
