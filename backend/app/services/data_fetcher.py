@@ -4,10 +4,12 @@ from app.utils.logger import setup_logger
 
 logger = setup_logger(__name__)
 
+yf.set_tz_cache_location("/tmp")
 
 def fetch_ticker_info(symbol: str) -> dict:
     try:
         t = yf.Ticker(symbol)
+        t._session = None
         info = t.info
 
         if not info or len(info) < 5 or ("regularMarketPrice" not in info and "currentPrice" not in info):

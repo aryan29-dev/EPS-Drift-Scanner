@@ -8,6 +8,11 @@ from app.services.drift_calculator import (
 from app.services.ml_scorer import compute_ml_drift_score
 from app.utils.logger import setup_logger
 
+import asyncio
+import time
+
+time.sleep(2)
+
 router = APIRouter()
 logger = setup_logger(__name__)
 
