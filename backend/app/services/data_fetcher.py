@@ -4,7 +4,7 @@ from app.utils.logger import setup_logger
 
 logger = setup_logger(__name__)
 
-FMP_KEY = "LiZze5dweH3ufM0xXfWGZBZe79MD1MP"
+FMP_KEY = "tLiZze5dweH3ufM0xXfWGZBZe79MD1MP"
 BASE = "https://financialmodelingprep.com/api/v3"
 
 
