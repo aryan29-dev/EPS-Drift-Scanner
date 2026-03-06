@@ -1,4 +1,4 @@
-const BASE = "https://eps-drift-scanner.onrender.com/api";
+const BASE = import.meta.env.VITE_API_URL || "http://localhost:8000/api";
 
 export async function scanTickers(tickers, alertThreshold = 5) {
   const res = await fetch(`${BASE}/scanner/scan`, {
