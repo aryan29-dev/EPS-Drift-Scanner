@@ -8,7 +8,7 @@ A full-stack real-time earnings analysis tool that scans stocks for EPS beats an
 
 ## What it does
 
-- Fetches live EPS actuals vs analyst estimates for any stock ticker via Financial Modeling Prep API
+- Fetches live EPwS actuals vs analyst estimates for any stock ticker via Financial Modeling Prep API
 - Calculates drift % per quarter and classifies as Strong Beat / Beat / In Line / Miss / Strong Miss
 - Detects whether a company's drift trend is accelerating, decelerating, or stable
 - Uses scikit-learn LinearRegression to flag anomalous EPS surprises vs a company's own historical pattern
@@ -64,9 +64,4 @@ npm run dev
 
 Open **http://localhost:5173**, add tickers and hit **SCAN**.
 
-## Live Deployment
-
-Backend: [https://eps-drift-scanner.onrender.com](https://eps-drift-scanner.onrender.com)  
-Frontend: [https://eps-drift-scanner.vercel.app](https://eps-drift-scanner.vercel.app)
-
-> **Note:** The live demo uses a free-tier Render instance which may take 30–60 seconds to wake up on first scan.
+> **Local dev note:** The frontend defaults to `http://localhost:8000/api`. The live Vercel deployment uses the `VITE_API_URL` environment variable to point to Render.
