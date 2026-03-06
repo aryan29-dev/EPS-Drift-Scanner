@@ -2,6 +2,8 @@
 
 A full-stack real-time earnings analysis tool that scans stocks for EPS beats and misses against Wall Street estimates, with ML-powered anomaly detection.
 
+🔴 **Live Demo:** [eps-drift-scanner.vercel.app](https://eps-drift-scanner.vercel.app)
+
 ![EPS Drift Scanner](demo.png)
 
 ## What it does
@@ -61,3 +63,7 @@ npm run dev
 ```
 
 Open **http://localhost:5173**, add tickers and hit **SCAN**.
+
+## Live Deployment
+
+[https://eps-drift-scanner.vercel.app](https://eps-drift-scanner.vercel.app)
