@@ -8,7 +8,7 @@ A full-stack real-time earnings analysis tool that scans stocks for EPS beats an
 
 ## What it does
 
-- Fetches live EPS actuals vs analyst estimates for any stock ticker via Alpha Vantage API
+- Fetches live EPS actuals vs analyst estimates for any stock ticker via Financial Modeling Prep API
 - Calculates drift % per quarter and classifies as Strong Beat / Beat / In Line / Miss / Strong Miss
 - Detects whether a company's drift trend is accelerating, decelerating, or stable
 - Uses scikit-learn LinearRegression to flag anomalous EPS surprises vs a company's own historical pattern
@@ -20,7 +20,7 @@ A full-stack real-time earnings analysis tool that scans stocks for EPS beats an
 | Layer | Tech |
 |---|---|
 | Backend API | FastAPI |
-| Data ingestion | Alpha Vantage API |
+| Data ingestion | Financial Modeling Prep API |
 | Data processing | pandas |
 | ML anomaly detection | scikit-learn |
 | Frontend | React + Vite |

@@ -4,33 +4,23 @@ from app.utils.logger import setup_logger
 
 logger = setup_logger(__name__)
 
-AV_KEY = "CK46SM2DEPI9PM7H"
-BASE = "https://www.alphavantage.co/query"
+FMP_KEY = "LiZze5dweH3ufM0xXfWGZBZe79MD1MP"
+BASE = "https://financialmodelingprep.com/api/v3"
 
 
 def fetch_ticker_info(symbol: str) -> dict:
     try:
-        r = requests.get(BASE, params={
-            "function": "OVERVIEW",
-            "symbol": symbol,
-            "apikey": AV_KEY
-        }, timeout=10)
+        r = requests.get(f"{BASE}/profile/{symbol}", params={"apikey": FMP_KEY}, timeout=10)
         data = r.json()
 
-        if not data or "Symbol" not in data:
+        if not data or not isinstance(data, list) or len(data) == 0:
             raise ValueError(f"{symbol} is not a valid or listed ticker")
 
-        price_r = requests.get(BASE, params={
-            "function": "GLOBAL_QUOTE",
-            "symbol": symbol,
-            "apikey": AV_KEY
-        }, timeout=10)
-        price_data = price_r.json().get("Global Quote", {})
-
+        profile = data[0]
         return {
-            "company_name": data.get("Name") or symbol,
-            "sector": data.get("Sector") or "Unknown",
-            "current_price": float(price_data.get("05. price", 0) or 0),
+            "company_name": profile.get("companyName") or symbol,
+            "sector": profile.get("sector") or "Unknown",
+            "current_price": float(profile.get("price") or 0),
         }
     except Exception as e:
         logger.warning(f"Invalid ticker {symbol}: {e}")
@@ -39,27 +29,23 @@ def fetch_ticker_info(symbol: str) -> dict:
 
 def fetch_earnings_history(symbol: str, max_quarters: int = 12) -> pd.DataFrame:
     try:
-        r = requests.get(BASE, params={
-            "function": "EARNINGS",
-            "symbol": symbol,
-            "apikey": AV_KEY
-        }, timeout=10)
+        r = requests.get(f"{BASE}/historical/earning_calendar/{symbol}",
+                         params={"apikey": FMP_KEY, "limit": max_quarters}, timeout=10)
         data = r.json()
 
-        quarters = data.get("quarterlyEarnings", [])
-        if not quarters:
+        if not data or not isinstance(data, list):
             return pd.DataFrame(columns=["date", "actual", "estimate"])
 
         rows = []
-        for q in quarters[:max_quarters]:
-            actual = q.get("reportedEPS")
-            estimate = q.get("estimatedEPS")
-            date = q.get("fiscalDateEnding")
-            if actual and actual != "None" and date:
+        for q in data[:max_quarters]:
+            actual = q.get("eps")
+            estimate = q.get("epsEstimated")
+            date = q.get("date")
+            if actual is not None and date:
                 rows.append({
                     "date": date,
                     "actual": float(actual),
-                    "estimate": float(estimate) if estimate and estimate != "None" else None,
+                    "estimate": float(estimate) if estimate is not None else None,
                 })
 
         df = pd.DataFrame(rows)
