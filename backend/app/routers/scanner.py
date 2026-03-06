@@ -7,11 +7,7 @@ from app.services.drift_calculator import (
 )
 from app.services.ml_scorer import compute_ml_drift_score
 from app.utils.logger import setup_logger
-
-import asyncio
 import time
-
-time.sleep(2)
 
 router = APIRouter()
 logger = setup_logger(__name__)
@@ -23,7 +19,9 @@ def scan_tickers(req: ScanRequest):
         symbol = symbol.upper().strip()
         try:
             info        = fetch_ticker_info(symbol)
+            time.sleep(1)
             earnings_df = fetch_earnings_history(symbol)
+            time.sleep(1)
             eps_records, drift_values = build_eps_records(earnings_df)
             summary     = compute_summary_stats(drift_values)
             drift_trend = detect_drift_trend(drift_values)

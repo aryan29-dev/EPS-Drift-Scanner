@@ -8,7 +8,7 @@ A full-stack real-time earnings analysis tool that scans stocks for EPS beats an
 
 ## What it does
 
-- Fetches live EPS actuals vs analyst estimates for any stock ticker via yfinance
+- Fetches live EPS actuals vs analyst estimates for any stock ticker via Alpha Vantage API
 - Calculates drift % per quarter and classifies as Strong Beat / Beat / In Line / Miss / Strong Miss
 - Detects whether a company's drift trend is accelerating, decelerating, or stable
 - Uses scikit-learn LinearRegression to flag anomalous EPS surprises vs a company's own historical pattern
@@ -20,7 +20,7 @@ A full-stack real-time earnings analysis tool that scans stocks for EPS beats an
 | Layer | Tech |
 |---|---|
 | Backend API | FastAPI |
-| Data ingestion | yfinance |
+| Data ingestion | Alpha Vantage API |
 | Data processing | pandas |
 | ML anomaly detection | scikit-learn |
 | Frontend | React + Vite |
@@ -51,7 +51,7 @@ EPS-Drift-Scanner/
 ```bash
 cd backend
 conda activate base
-pip install fastapi uvicorn yfinance pandas numpy scikit-learn pydantic
+pip install fastapi uvicorn requests pandas numpy scikit-learn pydantic
 uvicorn main:app --reload --port 8000
 ```
 
@@ -66,4 +66,7 @@ Open **http://localhost:5173**, add tickers and hit **SCAN**.
 
 ## Live Deployment
 
-[https://eps-drift-scanner.vercel.app](https://eps-drift-scanner.vercel.app)
+Backend: [https://eps-drift-scanner.onrender.com](https://eps-drift-scanner.onrender.com)  
+Frontend: [https://eps-drift-scanner.vercel.app](https://eps-drift-scanner.vercel.app)
+
+> **Note:** The live demo uses a free-tier Render instance which may take 30–60 seconds to wake up on first scan.
