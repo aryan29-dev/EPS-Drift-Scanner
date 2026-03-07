@@ -53,10 +53,20 @@ export default function DetailPanel({ data, onClose }) {
                 <div className={styles.chartTitle}>DRIFT % PER QUARTER</div>
                 <ResponsiveContainer width="100%" height={120}>
                     <BarChart data={chartData} margin={{ left: -10, right: 10 }}>
-                        <XAxis dataKey="date" tick={{ fontSize: 9, fill: "var(--text-muted)" }} />
-                        <YAxis tick={{ fontSize: 9, fill: "var(--text-muted)" }} />
-                        <Tooltip contentStyle={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 6, fontSize: 10 }} formatter={v => [fmtDrift(v), "Drift"]} />
-                        <ReferenceLine y={0} stroke="var(--border)" />
+                        <XAxis dataKey="date" tick={{ fontSize: 9, fill: "#4a7a9b" }} />
+                        <YAxis tick={{ fontSize: 9, fill: "#4a7a9b" }} />
+                        <Tooltip
+                            content={({ active, payload, label }) => {
+                                if (!active || !payload?.length) return null;
+                                return (
+                                    <div style={{ background: "#071628", border: "1px solid #0d2a4a", borderRadius: 6, padding: "6px 10px", fontSize: 10 }}>
+                                        <p style={{ color: "#ffffff", fontWeight: "bold", marginBottom: 4 }}>{label}</p>
+                                        <p style={{ color: "#00e5ff" }}>Drift : {fmtDrift(payload[0].value)}</p>
+                                    </div>
+                                );
+                            }}
+                        />
+                        <ReferenceLine y={0} stroke="#0d2a4a" />
                         <Bar dataKey="drift" radius={[3, 3, 0, 0]}>
                             {chartData.map((e, i) => <Cell key={i} fill={driftColor(e.drift)} />)}
                         </Bar>

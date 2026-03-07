@@ -64,7 +64,7 @@ export default function TickerCard({ data, isSelected, onSelect }) {
                 <ResponsiveContainer width="100%" height={64}>
                     <BarChart data={chartData} margin={{ top: 4, right: 0, left: 0, bottom: 0 }}>
                         <XAxis dataKey="date" hide />
-                        <Tooltip contentStyle={{ background: "var(--bg3)", border: "1px solid var(--border)", borderRadius: 5, fontSize: 10 }} formatter={v => [fmtDrift(v), "Drift"]} />
+                        <Tooltip contentStyle={{ background: "#071628", border: "1px solid #0d2a4a", borderRadius: 5, fontSize: 10, color: "#c8dff5" }} formatter={v => [fmtDrift(v), "Drift"]} />
                         <ReferenceLine y={0} stroke="var(--border)" />
                         <Bar dataKey="drift" radius={[2, 2, 0, 0]}>
                             {chartData.map((e, i) => <Cell key={i} fill={driftColor(e.drift)} />)}
