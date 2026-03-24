@@ -39,8 +39,8 @@ export default function App() {
                 <ControlBar tickers={tickers} setTickers={setTickers} threshold={threshold}
                     setThreshold={setThreshold} sortBy={sortBy} setSortBy={setSortBy}
                     onScan={scan} loading={loading} />
-
-                <main style={{ padding: "24px 32px", maxWidth: selected ? "calc(100% - 476px)" : "100%", transition: "max-width 0.25s ease" }}>
+                    
+                    <main style={{ padding: "16px", maxWidth: selected ? "calc(100% - 476px)" : "100%", transition: "max-width 0.25s ease" }}>
                     {error && (
                         <div style={{ background: "#ff335510", border: "1px solid #ff335530", borderRadius: 8, padding: "14px 18px", marginBottom: 20, fontSize: 12, color: "var(--red)" }}>
                             ⚠ {error} — make sure <code style={{ color: "var(--cyan)" }}>uvicorn main:app --reload</code> is running on port 8000.

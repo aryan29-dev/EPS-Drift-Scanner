@@ -1,6 +1,6 @@
 /* ControlBar.module.css */
 .wrap {
-    padding: 20px 32px;
+    padding: 16px;
     border-bottom: 1px solid var(--border2);
     background: var(--bg2);
     display: flex;
@@ -43,6 +43,7 @@
     padding: 9px 13px;
     font-size: 13px;
     outline: none;
+    min-width: 0;
 }
 
 .input:focus {
@@ -71,6 +72,7 @@
     font-size: 11px;
     cursor: pointer;
     letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 .addBtn:hover {
@@ -94,6 +96,9 @@
     align-items: center;
     gap: 8px;
     box-shadow: 0 0 20px var(--blue-glow);
+    white-space: nowrap;
+    width: 100%;
+    justify-content: center;
 }
 
 .scanBtn:hover:not(:disabled) {
@@ -188,7 +193,7 @@
 .customSelect {
     display: flex;
     gap: 4px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .customOption {
@@ -213,4 +218,15 @@
     background: var(--blue-glow);
     border-color: var(--blue-dim);
     color: var(--blue);
+}
+
+@media (min-width: 600px) {
+    .wrap {
+        padding: 20px 32px;
+    }
+
+    .scanBtn {
+        width: auto;
+        justify-content: flex-start;
+    }
 }
