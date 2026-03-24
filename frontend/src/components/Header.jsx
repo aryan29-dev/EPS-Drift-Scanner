@@ -4,10 +4,14 @@ export default function Header({ alertCount, lastScanned, tickerCount }) {
     return (
         <header className={styles.header}>
             <div className={styles.left}>
-                <div className={styles.logo}>
-                    <span className={styles.logoAccent}>EPS</span> DRIFT SCANNER
+                <div className={styles.top}>
+                    <div className={styles.logo}>
+                        <span className={styles.logoAccent}>EPS</span> DRIFT SCANNER
+                    </div>
                 </div>
-                <div className={styles.tagline}>Scans earnings reports in real-time to detect when companies beat or miss Wall Street EPS estimates</div>
+                <div className={styles.tagline}>
+                    Scans earnings reports in real-time to detect when companies beat or miss Wall Street EPS estimates
+                </div>
             </div>
             <div className={styles.right}>
                 {lastScanned && (

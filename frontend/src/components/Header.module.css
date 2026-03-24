@@ -1,10 +1,8 @@
 /* Header.module.css */
 .header {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 8px;
   padding: 14px 16px;
   border-bottom: 1px solid var(--border);
   background: linear-gradient(180deg, #031220 0%, transparent 100%);
@@ -14,10 +12,11 @@
   backdrop-filter: blur(12px);
 }
 
-.left {
-  flex: 1;
-  min-width: 0;
-  max-width: 100%;
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
 }
 
 .logo {
@@ -33,21 +32,11 @@
   text-shadow: 0 0 20px var(--blue);
 }
 
-.tagline {
-  font-size: 11px;
-  color: var(--text-dim);
-  letter-spacing: 0.5px;
-  margin-top: 4px;
-  line-height: 1.6;
-  word-break: normal;
-  overflow-wrap: break-word;
-}
-
 .right {
   display: flex;
   align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .meta {
@@ -63,7 +52,7 @@
 }
 
 .metaVal {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--blue);
   font-weight: 500;
 }
@@ -72,17 +61,17 @@
   background: #ff335518;
   border: 1px solid #ff335540;
   color: var(--red);
-  font-size: 11px;
-  padding: 5px 12px;
+  font-size: 10px;
+  padding: 4px 10px;
   border-radius: 4px;
   letter-spacing: 1px;
-  animation: pulse-blue 2s infinite;
+  white-space: nowrap;
 }
 
 .liveDot {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   font-size: 10px;
   color: var(--text-dim);
   letter-spacing: 2px;
@@ -100,11 +89,30 @@
   flex-shrink: 0;
 }
 
+.tagline {
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+  width: 100%;
+}
+
 @media (min-width: 768px) {
   .header {
-    padding: 18px 32px;
-    flex-wrap: nowrap;
+    flex-direction: row;
     align-items: center;
+    padding: 18px 32px;
+    gap: 16px;
+  }
+
+  .left {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .top {
+    justify-content: flex-start;
+    margin-bottom: 4px;
   }
 
   .logo {
@@ -113,6 +121,10 @@
   }
 
   .tagline {
-    letter-spacing: 3px;
+    letter-spacing: 0.5px;
+  }
+
+  .right {
+    gap: 20px;
   }
 }
