@@ -9,18 +9,17 @@
 }
 
 .row {
-    display: flex;
-    gap: 14px;
-    align-items: flex-end;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-items: end;
 }
 
 .field {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    flex: 1;
-    min-width: 140px;
+    min-width: 0;
 }
 
 .label {
@@ -44,6 +43,7 @@
     font-size: 13px;
     outline: none;
     min-width: 0;
+    width: 100%;
 }
 
 .input:focus {
@@ -91,14 +91,14 @@
     font-weight: 700;
     letter-spacing: 2px;
     cursor: pointer;
-    align-self: flex-end;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     box-shadow: 0 0 20px var(--blue-glow);
     white-space: nowrap;
     width: 100%;
-    justify-content: center;
+    grid-column: 1 / -1;
 }
 
 .scanBtn:hover:not(:disabled) {
@@ -220,13 +220,26 @@
     color: var(--blue);
 }
 
-@media (min-width: 600px) {
+/* iPad portrait and landscape */
+@media (min-width: 768px) {
     .wrap {
         padding: 20px 32px;
     }
 
+    .row {
+        grid-template-columns: 1fr 1fr 2fr auto;
+    }
+
     .scanBtn {
         width: auto;
-        justify-content: flex-start;
+        grid-column: auto;
+        justify-content: center;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .wrap {
+        padding: 20px 32px;
     }
 }

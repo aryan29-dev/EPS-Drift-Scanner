@@ -3,12 +3,13 @@
     background: var(--panel);
     border: 1px solid var(--border2);
     border-radius: 10px;
-    padding: 18px 18px 14px;
+    padding: 16px 14px 12px;
     cursor: pointer;
     transition: all 0.2s;
     animation: fadeUp 0.3s ease both;
     position: relative;
     overflow: hidden;
+    min-width: 0;
 }
 
 .card::before {
@@ -47,27 +48,33 @@
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 10px;
+    gap: 8px;
 }
 
 .ticker {
     font-family: var(--font-head);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: 2px;
 }
 
 .name {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-muted);
     margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
 }
 
 .topRight {
     text-align: right;
+    flex-shrink: 0;
 }
 
 .price {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
 }
 
@@ -79,7 +86,7 @@
 }
 
 .badge {
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 1.5px;
     border: 1px solid;
     border-radius: 3px;
@@ -88,7 +95,7 @@
 
 .stats {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     margin-bottom: 12px;
 }
 
@@ -97,18 +104,22 @@
     background: var(--bg3);
     border: 1px solid var(--border2);
     border-radius: 6px;
-    padding: 7px 10px;
+    padding: 6px 8px;
+    min-width: 0;
 }
 
 .statLabel {
-    font-size: 11px;
+    font-size: 9px;
     color: var(--text-muted);
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .statVal {
-    font-size: 14px;
+    font-size: 13px;
     font-family: var(--font-head);
     font-weight: 700;
     letter-spacing: 1px;
@@ -126,7 +137,7 @@
     color: var(--text-muted);
     letter-spacing: 1.5px;
     white-space: nowrap;
-    min-width: 74px;
+    min-width: 68px;
 }
 
 .mlTrack {
@@ -135,6 +146,7 @@
     background: var(--bg3);
     border-radius: 2px;
     overflow: hidden;
+    min-width: 0;
 }
 
 .mlFill {
@@ -166,11 +178,4 @@
     background: var(--bg3);
     border-radius: 4px;
     padding: 6px 10px;
-}
-
-.name {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 220px;
 }

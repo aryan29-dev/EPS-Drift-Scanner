@@ -3,13 +3,13 @@
     position: fixed;
     top: 0;
     right: 0;
-    width: 460px;
+    width: 100vw;
     height: 100vh;
     background: var(--bg2);
     border-left: 1px solid var(--border);
     overflow-y: auto;
     z-index: 200;
-    padding: 24px;
+    padding: 16px;
     box-shadow: -30px 0 80px #000a;
     animation: slideIn 0.25s ease;
 }
@@ -31,11 +31,12 @@
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 20px;
+    gap: 12px;
 }
 
 .panelTicker {
     font-family: var(--font-head);
-    font-size: 32px;
+    font-size: 26px;
     font-weight: 900;
     letter-spacing: 4px;
     color: var(--blue);
@@ -57,6 +58,8 @@
     font-size: 10px;
     letter-spacing: 1.5px;
     cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .closeBtn:hover {
@@ -76,6 +79,7 @@
     border: 1px solid var(--border2);
     border-radius: 8px;
     padding: 10px 13px;
+    min-width: 0;
 }
 
 .kpiLabel {
@@ -87,7 +91,7 @@
 
 .kpiVal {
     font-family: var(--font-head);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
 }
 
@@ -116,6 +120,7 @@
 
 .tableBlock {
     margin-bottom: 20px;
+    overflow-x: auto;
 }
 
 .tableHeader {
@@ -128,15 +133,17 @@
     padding: 6px 8px;
     border-bottom: 1px solid var(--border2);
     margin-bottom: 4px;
+    min-width: 320px;
 }
 
 .tableRow {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
     gap: 4px;
-    font-size: 13px;
+    font-size: 12px;
     padding: 7px 8px;
     border-radius: 4px;
+    min-width: 320px;
 }
 
 .tableRow:hover {
@@ -159,14 +166,26 @@
 }
 
 .mlDesc {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--text-dim);
     line-height: 1.6;
 }
 
-.mlDesc code {
-    color: var(--cyan);
-    background: var(--bg2);
-    padding: 1px 5px;
-    border-radius: 3px;
+@media (min-width: 768px) {
+    .panel {
+        width: 460px;
+        padding: 24px;
+    }
+
+    .panelTicker {
+        font-size: 32px;
+    }
+
+    .kpiVal {
+        font-size: 20px;
+    }
+
+    .tableRow {
+        font-size: 13px;
+    }
 }
