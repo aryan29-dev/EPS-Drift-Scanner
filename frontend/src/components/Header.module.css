@@ -17,6 +17,7 @@
 .left {
   flex: 1;
   min-width: 0;
+  max-width: 100%;
 }
 
 .logo {
@@ -24,6 +25,7 @@
   font-size: 18px;
   font-weight: 900;
   letter-spacing: 3px;
+  white-space: nowrap;
 }
 
 .logoAccent {
@@ -32,12 +34,13 @@
 }
 
 .tagline {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--text-dim);
-  letter-spacing: 1.5px;
+  letter-spacing: 0.5px;
   margin-top: 4px;
-  line-height: 1.5;
-  max-width: 480px;
+  line-height: 1.6;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .right {
