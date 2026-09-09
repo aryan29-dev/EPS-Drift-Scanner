@@ -1,0 +1,88 @@
+/* Page layout, results grid, loading skeletons, and empty state. */
+
+.main {
+    padding: 16px;
+    max-width: 100%;
+    transition: max-width 0.25s ease;
+}
+
+.narrowed {
+    max-width: calc(100% - 476px);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.error {
+    background: rgba(229, 83, 75, 0.1);
+    border: 1px solid rgba(229, 83, 75, 0.3);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: var(--red);
+}
+
+.error code {
+    font-family: var(--font-mono);
+    background: var(--bg2);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--text);
+}
+
+.skeleton {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+    height: 230px;
+}
+
+.skelTicker {
+    width: 70px;
+    height: 20px;
+    background: var(--bg2);
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.skelName {
+    width: 60%;
+    height: 10px;
+    background: var(--bg2);
+    border-radius: 3px;
+    margin-bottom: 16px;
+}
+
+.skelStats {
+    display: flex;
+    gap: 8px;
+}
+
+.skelBox {
+    flex: 1;
+    height: 50px;
+    background: var(--bg2);
+    border-radius: var(--radius);
+}
+
+.empty {
+    text-align: center;
+    padding: 80px 0;
+}
+
+.emptyTitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+}
+
+.emptyHint {
+    font-size: 13px;
+    color: var(--text-muted);
+}

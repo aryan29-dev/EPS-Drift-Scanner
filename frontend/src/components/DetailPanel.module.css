@@ -1,4 +1,5 @@
-/* DetailPanel.module.css */
+/* Slide-in panel: KPIs, EPS charts, and full earnings history for one ticker. */
+
 .panel {
     position: fixed;
     top: 0;
@@ -10,13 +11,13 @@
     overflow-y: auto;
     z-index: 200;
     padding: 16px;
-    box-shadow: -30px 0 80px #000a;
-    animation: slideIn 0.25s ease;
+    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.2s ease;
 }
 
 @keyframes slideIn {
     from {
-        transform: translateX(30px);
+        transform: translateX(24px);
         opacity: 0;
     }
 
@@ -30,41 +31,40 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     gap: 12px;
 }
 
 .panelTicker {
-    font-family: var(--font-head);
-    font-size: 26px;
-    font-weight: 900;
-    letter-spacing: 4px;
-    color: var(--blue);
-    text-shadow: 0 0 20px var(--blue-glow);
+    font-family: var(--font-ui);
+    font-size: 24px;
+    font-weight: 650;
+    letter-spacing: -0.4px;
+    color: var(--text);
 }
 
 .panelName {
-    font-size: 10px;
+    font-size: 13px;
     color: var(--text-muted);
     margin-top: 3px;
 }
 
 .closeBtn {
-    background: var(--bg3);
+    background: var(--panel);
     border: 1px solid var(--border);
     color: var(--text-dim);
-    border-radius: 5px;
+    border-radius: var(--radius);
     padding: 6px 12px;
-    font-size: 10px;
-    letter-spacing: 1.5px;
+    font-family: var(--font-ui);
+    font-size: 13px;
     cursor: pointer;
     white-space: nowrap;
     flex-shrink: 0;
 }
 
 .closeBtn:hover {
-    border-color: var(--blue-dim);
-    color: var(--blue);
+    border-color: var(--border2);
+    color: var(--text);
 }
 
 .kpiRow {
@@ -75,32 +75,32 @@
 }
 
 .kpi {
-    background: var(--bg3);
-    border: 1px solid var(--border2);
-    border-radius: 8px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     padding: 10px 13px;
     min-width: 0;
 }
 
 .kpiLabel {
-    font-size: 8px;
-    color: var(--text-muted);
-    letter-spacing: 1.5px;
+    font-size: 11px;
+    color: var(--text-dim);
     margin-bottom: 4px;
 }
 
 .kpiVal {
-    font-family: var(--font-head);
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .trendBadge {
     display: inline-block;
-    font-size: 10px;
-    letter-spacing: 2px;
+    font-size: 13px;
+    font-weight: 500;
     border: 1px solid;
-    border-radius: 4px;
+    border-radius: var(--radius);
     padding: 4px 12px;
     margin-bottom: 18px;
 }
@@ -110,12 +110,12 @@
 }
 
 .chartTitle {
-    font-size: 9px;
-    color: var(--text-muted);
-    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-dim);
     margin-bottom: 10px;
     padding-bottom: 6px;
-    border-bottom: 1px solid var(--border2);
+    border-bottom: 1px solid var(--border);
 }
 
 .tableBlock {
@@ -127,11 +127,10 @@
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
     gap: 4px;
-    font-size: 8px;
+    font-size: 11px;
     color: var(--text-muted);
-    letter-spacing: 1.5px;
     padding: 6px 8px;
-    border-bottom: 1px solid var(--border2);
+    border-bottom: 1px solid var(--border);
     margin-bottom: 4px;
     min-width: 320px;
 }
@@ -140,33 +139,40 @@
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
     gap: 4px;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
     font-size: 12px;
     padding: 7px 8px;
-    border-radius: 4px;
+    border-radius: var(--radius);
     min-width: 320px;
 }
 
 .tableRow:hover {
-    background: var(--bg3);
+    background: var(--panel);
+}
+
+.result {
+    font-family: var(--font-ui);
+    font-size: 12px;
 }
 
 .mlBox {
-    background: var(--bg3);
-    border: 1px solid var(--border2);
-    border-radius: 8px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     padding: 14px;
     margin-bottom: 32px;
 }
 
 .mlTitle {
-    font-size: 9px;
-    color: var(--text-muted);
-    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-dim);
     margin-bottom: 8px;
 }
 
 .mlDesc {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--text-dim);
     line-height: 1.6;
 }
@@ -178,7 +184,7 @@
     }
 
     .panelTicker {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     .kpiVal {

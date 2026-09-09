@@ -1,10 +1,14 @@
+import os
 import requests
 import pandas as pd
+from dotenv import load_dotenv
 from app.utils.logger import setup_logger
+
+load_dotenv()
 
 logger = setup_logger(__name__)
 
-FMP_KEY = "tLiZze5dweH3ufM0xXfWGZBZe79MD1MP"
+FMP_KEY = os.getenv("FMP_KEY")
 BASE = "https://financialmodelingprep.com/stable"
 
 
