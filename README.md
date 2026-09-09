@@ -2,11 +2,11 @@
 
 Tracks EPS beats and misses across quarters, flagging surprises that are unusual for each company rather than against a fixed threshold.
 
-**Live demo:** [eps-drift-scanner.vercel.app](https://eps-drift-scanner.vercel.app)
+**Live Demo:** [eps-drift-scanner.vercel.app](https://eps-drift-scanner.vercel.app)
 
 ![EPS Drift Scanner](demo.png)
 
-## What it does
+## What It Does
 
 - Pulls reported EPS against consensus analyst estimates for any US-listed ticker
 - Computes drift % per quarter and classifies each result as Strong Beat, Beat, In Line, Miss, or Strong Miss
@@ -15,7 +15,7 @@ Tracks EPS beats and misses across quarters, flagging surprises that are unusual
 - Fires configurable alerts when drift exceeds a user-set threshold
 - Drill-down panel with full earnings history, actual vs estimate, and per-quarter drift charts
 
-## How the drift tiers work
+## How The Drift Tiers Work
 
 Drift is the percentage gap between reported EPS and the consensus estimate. The tiers are:
 
@@ -35,7 +35,7 @@ The ML score is separate. A 6% beat is routine for one company and abnormal for 
 
 US-listed equities only. Canadian issuers were tested, including cross-listed names like RY and TD on the NYSE, but the data provider gates non-US earnings history behind a paid tier. Those tickers return profile data with no EPS history, so they are excluded.
 
-## Tech stack
+## Tech Stack
 
 | Layer | Tech |
 |---|---|
@@ -47,7 +47,7 @@ US-listed equities only. Canadian issuers were tested, including cross-listed na
 | Charts | Recharts |
 | Styling | CSS Modules |
 
-## Project structure
+## Project Structure
 
 ```
 EPS-Drift-Scanner/
