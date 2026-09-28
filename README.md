@@ -1,6 +1,6 @@
 # EPS Drift Scanner
 
-Tracks EPS beats and misses across quarters, flagging surprises that are unusual for each company rather than against a fixed threshold.
+Earnings analytics tool that compares reported EPS with consensus analyst estimates across quarters, highlighting beats and misses while identifying surprises that are unusual relative to each company's own historical pattern.
 
 **Live Demo:** [eps-drift-scanner.vercel.app](https://eps-drift-scanner.vercel.app)
 
@@ -8,65 +8,76 @@ Tracks EPS beats and misses across quarters, flagging surprises that are unusual
 
 ## What It Does
 
-- Pulls reported EPS against consensus analyst estimates for any US-listed ticker
-- Computes drift % per quarter and classifies each result as Strong Beat, Beat, In Line, Miss, or Strong Miss
-- Classifies a company's drift trend as accelerating, decelerating, or stable
-- Scores each latest surprise for how unusual it is against that company's own history using scikit-learn
-- Fires configurable alerts when drift exceeds a user-set threshold
-- Drill-down panel with full earnings history, actual vs estimate, and per-quarter drift charts
+- **EPS comparison:** Retrieves reported EPS and consensus analyst estimates for supported U.S.-listed equities.
 
-## How The Drift Tiers Work
+- **Drift analysis:** Calculates the percentage difference between reported and estimated EPS for each quarter.
 
-Drift is the percentage gap between reported EPS and the consensus estimate. The tiers are:
+- **Beat and miss classification:** Categorizes each result as Strong Beat, Beat, In Line, Miss, or Strong Miss.
+
+- **Trend analysis:** Classifies a company's EPS drift pattern as accelerating, decelerating, or stable.
+
+- **Anomaly detection:** Uses scikit-learn to measure how unusual the latest earnings surprise is relative to the company's own historical drift pattern.
+
+- **Configurable alerts:** Flags results when EPS drift exceeds a user-defined threshold.
+
+- **Historical drill-down:** Displays earnings history, reported versus estimated EPS, and quarter-by-quarter drift charts.
+
+## Drift Classification
+
+Drift represents the percentage difference between reported EPS and the consensus analyst estimate.
 
 | Drift | Classification |
-|---|---|
+| --- | --- |
 | ≥ +10% | Strong Beat |
 | +2% to +10% | Beat |
 | −2% to +2% | In Line |
 | −10% to −2% | Miss |
 | ≤ −10% | Strong Miss |
 
-The ±2% band treats small gaps as noise rather than signal, since consensus estimates are rarely precise to the cent.
+The ±2% range treats relatively small differences as in-line results rather than meaningful beats or misses.
 
-The ML score is separate. A 6% beat is routine for one company and abnormal for another, so the model compares each surprise against that company's own historical drift pattern instead of a fixed cutoff.
+The anomaly score is calculated separately from these fixed classifications. A 6% earnings beat may be typical for one company but unusual for another, so the model evaluates each surprise relative to that company's own historical drift pattern.
 
 ## Coverage
 
-US-listed equities only. Canadian issuers were tested, including cross-listed names like RY and TD on the NYSE, but the data provider gates non-US earnings history behind a paid tier. Those tickers return profile data with no EPS history, so they are excluded.
+The scanner currently supports U.S.-listed equities with available earnings-history data.
+
+Canadian issuers were also tested, including cross-listed companies such as RY and TD on the NYSE. However, the current data provider restricts the required non-U.S. earnings history under its paid tier. These tickers can return company profile information without sufficient EPS history and are therefore excluded from the scanner.
 
 ## Tech Stack
 
-| Layer | Tech |
-|---|---|
+| Area | Technology |
+| --- | --- |
 | Backend API | FastAPI |
-| Data source | Financial Modeling Prep API |
-| Data processing | pandas |
-| Anomaly detection | scikit-learn |
-| Frontend | React + Vite |
+| Data Source | Financial Modeling Prep API |
+| Data Processing | pandas |
+| Anomaly Detection | scikit-learn |
+| Frontend | React, Vite |
 | Charts | Recharts |
 | Styling | CSS Modules |
+| Backend Deployment | Render |
+| Frontend Deployment | Vercel |
 
 ## Project Structure
 
-```
+```text
 EPS-Drift-Scanner/
 ├── backend/
 │   ├── main.py                  # FastAPI entry point
 │   └── app/
 │       ├── routers/             # API route handlers
-│       ├── services/            # Data fetching, drift calculation, ML scoring
+│       ├── services/            # Data fetching, drift calculations, and ML scoring
 │       ├── models/              # Pydantic schemas
-│       └── utils/               # Logger
+│       └── utils/               # Logging utilities
 └── frontend/
     └── src/
-        ├── components/          # Header, ControlBar, TickerCard, DetailPanel
-        ├── hooks/               # useScan
-        ├── utils/               # API calls, formatters
-        └── styles/              # Global tokens and theme
+        ├── components/          # Header, controls, ticker cards, and detail panel
+        ├── hooks/               # Scanner state and request logic
+        ├── utils/               # API calls and formatting utilities
+        └── styles/              # Global styles and theme
 ```
 
-## Setup
+## Running Locally
 
 ### Backend
 
@@ -77,13 +88,13 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Create `backend/.env` with a Financial Modeling Prep API key:
+Create a `backend/.env` file with your Financial Modeling Prep API key:
 
-```
+```text
 FMP_KEY=your_key_here
 ```
 
-Then run:
+Start the backend:
 
 ```bash
 uvicorn main:app --reload --port 8000
@@ -97,10 +108,12 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5173, add tickers, and hit Scan.
+Open [http://localhost:5173](http://localhost:5173), add one or more supported tickers, and run the scanner.
 
 ## Deployment
 
-Backend on Render, frontend on Vercel. The frontend defaults to `http://localhost:8000/api` locally and reads `VITE_API_URL` in production. The backend reads `FMP_KEY` from the environment.
+The FastAPI backend is deployed on Render, while the React frontend is deployed on Vercel.
 
-The live backend runs on a free Render instance, so the first scan after a period of inactivity can take 30 to 60 seconds while the service wakes up.
+For local development, the frontend connects to `http://localhost:8000/api`. In production, the API endpoint is configured through `VITE_API_URL`, while the backend reads the Financial Modeling Prep API key from the `FMP_KEY` environment variable.
+
+The live backend runs on a free Render instance, so the first request after a period of inactivity may take approximately 30–60 seconds while the service starts.
